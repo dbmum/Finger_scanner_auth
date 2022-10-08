@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type="text/css" href="..\static\style.css">
+    <title>Event</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+<body>
+    <div class="header">
+    <a class = "home" href="http://127.0.0.1:8000/"><img src="../static/home.jpg" width = "60px" margin-top: auto margin-bottom: auto, alt="Home"></a>
+    <h1>Event</h1>
+    </div>
+    <p class="description">Choose which events to run:</p>
+    <form action="http://127.0.0.1:8000/scan/" method ="POST" >
+        <div class="scroll-bg">
+            <div class = "scroll-div" style="height: 175px;">
+                {% csrf_token %}
+                <div class = "scroll-object">
+                    {% for i in perks %}
+                    <p style="text-align: left;">
+                        <input type="checkbox">
+                        {{i.name}}
+                    </p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div><br>
+    <div style="display: grid; width: 400px; margin-left: auto; margin-right: auto;
+    grid-template-columns: 1fr 1fr;">
+        <!-- <div style="text-align: center; margin-left: auto; margin-right: auto;"><a class = "button" href="http://127.0.0.1:8000/"> Start Event</a></div> -->
+        <label for="pin" class = "float" style="margin-left: auto; margin-right: auto;">Enter user pin:</label>
+        <input type="text" style= "width: 80px;"  id="pin" name="pin" title="Have the user type their four digit pin then hit enter.">
+    </div>
+    </form><br>
+    <div id = "memberphoto">
+        <img src="../static/default.jpg" alt="member image">
+        <!-- <img src="../static/x.jpg" alt="check or x"> -->
+        <span class="material-symbols-outlined" style="color: red;">close</span>
+        <!-- <span class="material-symbols-outlined" style="color: green;">done</span> -->
+    </div>
+
+    <script>
+    //autofocus on perk when loaded
+        window.onload = function() {
+        document.getElementById("pin").focus();
+        };
+    </script>
+    
+</body>
+</html>

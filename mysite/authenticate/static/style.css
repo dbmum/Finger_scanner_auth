@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans&display=swap');
+
+body{
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.header{
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #3a58ae;
+    
+    height: 150px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 10px solid #ffcc02;
+    margin-left: 15vw;
+    margin-right: 15vw;
+}
+h1{
+    font-family: 'Bebas Neue', sans-serif;
+    text-align: center;
+    color: #ffcc02;
+    font-size: 75px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 20px;
+    padding-bottom: auto;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: auto;
+    padding-right: auto;
+}
+/* .grid-container {
+    display: grid;
+    grid-gap: 10px;
+    background-color: #2196F3;
+    padding: 10px;
+} */
+.grid-item {
+    text-align: center;
+    padding: 25px;
+}
+.form-grid{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+#memberphoto{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-left: 15vw;
+    margin-right: 15vw;
+}
+#memberphoto img {
+    padding: auto;
+    border: 10px solid #3a58ae;    
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    height:350px;
+}
+#memberphoto span{
+    font-size: 400px;
+    padding-top: 0px;
+}
+.float{
+    text-align:right;
+}
+.menu {
+    grid-column: 1;
+    grid-row: 2/ span 2;
+}
+.home{
+    position: absolute;
+    margin-top: 35px;
+    margin-left: 25PX;
+    width: 125px;
+    height: 125px;
+    color: #ffcc02;
+}
+.create{
+    background-color:
+    #3a58ae; 
+    color: #ffcc02; 
+    border-radius: 5px; 
+    margin-left: auto; 
+    margin-right: auto;
+    cursor: pointer;
+}
+.button{
+    margin-bottom: 15px;
+    width: 295px;
+    border-radius: 5px;
+    font-size: 40px;
+    border-radius: 5px;
+}
+.button:link, .button:visited {
+    background-color: #3a58ae;
+    color: #ffcc02;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+.button:hover, .button:active {
+    background-color: #ffcc02;
+    color: #3a58ae;
+}
+ul{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+.scroll-bg{
+    background-color: #3a58ae;
+    width: 50vw;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.scroll-div{
+    background-color: rgb(225, 215, 215);
+    width: 50vw;
+    height: 300px;
+    overflow: hidden;
+    overflow-y: scroll;
+    border-radius: 10px;
+}
+.scroll-object{
+    color:black;
+    font-size: 15px;
+    padding: 20px;
+}
+#UI{
+    width: 40vw;
+    flex: 40%;
+    color: black;
+    background-color: rgb(225, 215, 215);
+    padding: 10px;
+    border: 10px solid #3a58ae;
+    border-radius: 5px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+#UI form{
+    width:300px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+#UI label{
+    margin-top: 5px;
+}
+#UI input{
+    margin-top: 5px;
+}
+#UI .button{
+    width: auto;
+    cursor:pointer;
+    
+}
+
+.description{
+    font-size: 25px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    font-style: bold;
+    text-align: center;
+}
+
+#member_table{
+    margin-left: auto;
+    margin-right: auto;
+}
+#member_table th{
+    border-bottom: 2px dashed  black;
+    padding-right: 18px;
+    text-align: left;
+}
+#member_table td{
+    font-size: 18px;
+}
+#member_table .date{
+    padding-right: 0px;
+    padding-left: 20px;
+    text-align: right;
+} 

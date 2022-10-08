@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type="text/css" href="..\static\style.css">
+    <title>Add_Person</title>
+</head>
+<body>
+    <div class="header">
+    <a class = "home" href="http://127.0.0.1:8000/"><img src="../static/home.jpg" width = "60px" margin-top: auto margin-bottom: auto, alt="Home"></a>
+    <h1>Add Person</h1>
+    </div>
+    <div id="UI">
+    <form action="http://127.0.0.1:8000/enroll_person/" method ="POST">
+        {% csrf_token %}
+        <div class="form-grid" style="padding-top: 5px;">
+            <!--first name-->
+            <label for="first_name" class = "float">First Name:</label>
+            <input type="text" id="first_name" name="first_name" title="Enter the members first name.">
+            <!--last name-->
+            <label for="last_name" class = "float">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" title="Enter the members Last name.">
+            <!--pin-->
+            <label for="pin" class = "float">pin:</label>
+            <input type="text" id="pin" name="pin" title="Enter the members pin."
+            onchange="validate('pin', pin)"> <br><p style="font-size: 16px; color: red" id = "pinerror"></p>
+            <!-- scan
+            <input class="" style="background-color: #3a58ae; color: #ffcc02; border-radius: 5px;" 
+            type = "button" name = "scan" value = "Scan" onclick=""><p id = "buttonerror"></p>-->
+        </div> 
+            <!-- perks -->
+            <p class="description" style = "font-size: 13px;" >Choose which perks the member will recieve:</p>
+            <div class="scroll-bg" style="width: auto;">
+                <div class = "scroll-div" style="width: auto; height: 200px;" >
+                        <div class = "scroll-object">
+                            {% for i in perks %}
+                            <p style="text-align: left;">
+                                <input name="{{i.id}}" type="checkbox">
+                                {{i.name}}
+                            </p>
+                            {% endfor %}
+                    </div>
+                </div>
+            </div><br>
+        <!-- create -->
+        <input class="button" style="background-color: #3a58ae; color: #ffcc02; font-size: 20px; margin-left: auto; margin-right: auto;" 
+        type = "submit" name = "submit" value = "Take Picture to Create" onclick=""><p id = "buttonerror"></p>
+    </form>
+    </div>
+    <script>
+        function validate(field, id){  
+        //get the values
+        pin = document.getElementById("pin").value;
+
+        //set errors to false by default
+        document.getElementById(field + "error").innerHTML = ""; 
+
+        if(pin>9999 || isNaN(pin) || pin.length<4){
+            console.log(field);
+            document.getElementById(field + "error").innerHTML = "Input not Valid"; //throw error
+            document.getElementById(field).focus(); // focus on the error
+        }
+
+        }
+    </script>
+</body>
+</html>

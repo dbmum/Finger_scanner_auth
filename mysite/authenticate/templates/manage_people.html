@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type="text/css" href="..\static\style.css">
+    <link rel= "stylesheet" type="text/css" href="..\..\static\style.css">
+    <title>Manage People</title>
+    <script src="..\static\reader.js"></script>
+</head>
+<body>
+    <div class="header">
+    <a class = "home" href="http://127.0.0.1:8000/"><img src="../static/home.jpg" width = "60px" margin-top: auto margin-bottom: auto, alt="Home"></a>
+    <h1>Manage People</h1>
+    </div>
+    <div style="text-align: center;"><a class = "button" href="http://127.0.0.1:8000/add_person/"> Add Person</a></div>
+    <p class="description">Select to Edit or Remove Person:</p>
+    <div class="scroll-bg">
+    
+        <div class = "scroll-div">
+            <div class = "scroll-object">
+                <table id="member_table">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>PIN</th>
+                        <th class="date">Date Added</th>
+                    </tr>
+                    {% for i in people %}
+                    
+                    <tr>
+                        <td><a href="http://127.0.0.1:8000/edit_person/{{i.id}}">{{i.first_name}}</td>
+                        <td>{{i.last_name}}</td>
+                        <td>{{i.pin}}</td>
+                        <td class="date">{{i.date_added}}</td>
+                    </tr>
+                    </a>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

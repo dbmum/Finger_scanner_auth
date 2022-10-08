@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type="text/css" href="..\static\style.css">
+    <title>Manage Perks</title>
+    <script src="..\static\reader.js"></script>
+</head>
+<body>
+    <div class="header">
+    <a class = "home" href="http://127.0.0.1:8000/"><img src="../static/home.jpg" width = "60px" margin-top: auto margin-bottom: auto, alt="Home"></a>
+    <h1>Manage Perks</h1>
+    </div><br>
+    <form action="http://127.0.0.1:8000/add_perk/" method ="POST" style="display: grid; width: 400px; margin-left: auto; margin-right: auto;
+        grid-template-columns: 1fr 1fr 1fr;">
+        {% csrf_token %}
+        <!-- add perk -->
+        <label for="perk" class = "float" style="margin-left: auto; margin-right: auto;">Add a perk:</label>
+        <input type="text" id="perk" name="perk" title="Enter the perk you would like to add."
+            onchange="validate('perk', perk)">
+        <!-- submit -->
+        <input class="create"
+        type = "submit" name = "submit" value = "Create" onclick="submit"><p id = "buttonerror"></p>
+    </form>
+    <p class="description">Click perk to remove it from list:</p>
+    <div class="scroll-bg" style="width: 400px;">
+        <div class = "scroll-div" style="width: 400px;">
+            <div class = "scroll-object">
+                <table id="member_table">
+                    <tr>
+                        <th>Name of Perk</th>
+                        <th>Date Created</th>
+                    </tr>
+                    {% for i in perks %}
+                    <tr>
+                        <td><a href="">{{i.name}}</a></td>
+                        <td>{{i.date_added}}</td>
+                    </tr>
+                    {% endfor %} 
+                </table>
+
+                <!-- {% for i in perks %}
+                <dl>
+                    <dt><a href="">{{i.name}}</a></dt>
+                    <dd>Added {{i.date_added}}</dd>
+                </dl>
+                {% endfor %} -->
+            </div>
+        </div>
+    </div>
+    <script>
+        //autofocus on perk when loaded
+        window.onload = function() {
+        document.getElementById("perk").focus();
+        //document.getElementById("perk_list").innerHTML = perk;
+        };
+
+        // submit the perk to the database
+        function submit(){
+
+        }
+
+        </script>
+</body>
+</html>
