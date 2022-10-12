@@ -6,15 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel= "stylesheet" type="text/css" href="..\static\style.css">
     <link rel= "stylesheet" type="text/css" href="..\..\static\style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Manage People</title>
     <script src="..\static\reader.js"></script>
 </head>
 <body>
     <div class="header">
-    <a class = "home" href="http://127.0.0.1:8000/"><img src="../static/home.jpg" width = "60px" margin-top: auto margin-bottom: auto, alt="Home"></a>
+    <a class = "home" href="http://127.0.0.1:8000/"><span class="material-symbols-rounded" style="font-size: 75px;">
+        home
+        </span></a>
     <h1>Manage People</h1>
     </div>
     <div style="text-align: center;"><a class = "button" href="http://127.0.0.1:8000/add_person/"> Add Person</a></div>
+    <p class="description" style="color:red;">{{error}}</p>
     <p class="description">Select to Edit or Remove Person:</p>
     <div class="scroll-bg">
     

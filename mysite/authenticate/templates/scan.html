@@ -7,24 +7,36 @@
     <link rel= "stylesheet" type="text/css" href="..\static\style.css">
     <title>Event</title>
     
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
     <div class="header">
-    <a class = "home" href="http://127.0.0.1:8000/"><img src="../static/home.jpg" width = "60px" margin-top: auto margin-bottom: auto, alt="Home"></a>
+    <a class = "home" href="http://127.0.0.1:8000/"><span class="material-symbols-rounded" style="font-size: 75px;">
+        home
+        </span></a>
     <h1>Event</h1>
     </div>
     <p class="description">Choose which events to run:</p>
-    <form action="http://127.0.0.1:8000/scan/" method ="POST" >
+    <form action="http://127.0.0.1:8000/verify/" method ="POST" >
         <div class="scroll-bg">
             <div class = "scroll-div" style="height: 175px;">
                 {% csrf_token %}
                 <div class = "scroll-object">
+                    <!-- if selected for the event -->
                     {% for i in perks %}
+                    {% if i.id in selected %}
                     <p style="text-align: left;">
-                        <input type="checkbox">
+                        <input name="{{i.id}}" type="checkbox" checked>
                         {{i.name}}
                     </p>
+                    
+                    <!-- If it was not selected for the event -->
+                    {% else %}
+                    <p style="text-align: left;">
+                        <input name="{{i.id}}" type="checkbox">
+                        {{i.name}}
+                    </p>
+                    {%endif%}
                     {% endfor %}
                 </div>
             </div>
@@ -33,14 +45,24 @@
     grid-template-columns: 1fr 1fr;">
         <!-- <div style="text-align: center; margin-left: auto; margin-right: auto;"><a class = "button" href="http://127.0.0.1:8000/"> Start Event</a></div> -->
         <label for="pin" class = "float" style="margin-left: auto; margin-right: auto;">Enter user pin:</label>
-        <input type="text" style= "width: 80px;"  id="pin" name="pin" title="Have the user type their four digit pin then hit enter.">
+        <input type="text" onchange="validate('pin', pin)" style= "width: 80px;"  id="pin" name="pin" title="Have the user type their four digit pin then hit enter.">
+        <br><p style="font-size: 16px; color: red" id = "pinerror"></p>
     </div>
-    </form><br>
+    </form>
+    <p class="description">{{name}}</p>
     <div id = "memberphoto">
-        <img src="../static/default.jpg" alt="member image">
+        <img src="../static/{{image}}" alt="member image">
+        <!-- <img src="./{{image}}" alt="member image"> -->
         <!-- <img src="../static/x.jpg" alt="check or x"> -->
-        <span class="material-symbols-outlined" style="color: red;">close</span>
-        <!-- <span class="material-symbols-outlined" style="color: green;">done</span> -->
+        <!-- if they are not allowed into the event -->
+        {% if is_verified == '0' %}
+        <span class="material-symbols-rounded" id = "x" style="font-size: 200px; margin-top: auto; margin-bottom:auto; color:red;">close</span>
+        {%endif%}
+        <!-- if they are allowed into the event -->
+        {% if is_verified == '1' %}
+        <span class="material-symbols-rounded" id = "check" style="font-size: 200px; margin-top: auto; margin-bottom:auto; color:green;">done</span>
+        {%endif%}
+        
     </div>
 
     <script>
@@ -48,6 +70,32 @@
         window.onload = function() {
         document.getElementById("pin").focus();
         };
+
+        function validate(field, id){  
+        //get the values
+        pin = document.getElementById("pin").value;
+
+        //set errors to false by default
+        document.getElementById(field + "error").innerHTML = ""; 
+        pininuse = false
+        
+        if(pin>9999 || isNaN(pin) || pin.length<4){
+            console.log(field);
+            document.getElementById(field + "error").innerHTML = "Input not Valid"; //throw error
+            document.getElementById(field).focus(); // focus on the error
+        }
+        else{
+            event.key = "Enter"
+        }
+        
+
+        }
+
+        //prevent enter being pressed
+//         $(document).on("keydown", "form", function(event) { 
+//     return event.key != "Enter";
+// });
+
     </script>
     
 </body>

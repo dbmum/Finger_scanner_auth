@@ -15,4 +15,3 @@ class Person(models.Model):
     perks = models.ManyToManyField(Perk, blank=True)
 
 
-

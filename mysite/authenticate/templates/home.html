@@ -7,7 +7,7 @@
     <link rel= "stylesheet" type="text/css" href="..\static\style.css">
     <title>home</title>
     <script type="module" src="..\static\reader.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
     <div class="header">
@@ -17,12 +17,14 @@
             </span>
         </a> -->
         <a class = "home" href="http://127.0.0.1:8000/">
-            <img src="../static/home.jpg" width = "60px" margin-top: auto margin-bottom: auto, alt="Home">
+            <span class="material-symbols-rounded home_icon" style="font-size: 75px;">
+                home
+                </span>
         </a>
     <h1>Holidae Board Games</h1>
     </div>
     <div class="grid-item">
-        <ul>
+        <ul style= "list-style-type: none;">
             <!-- <button onclick="scan()">test</button> -->
             <li><a class = "button" href="http://127.0.0.1:8000/scan/"> Start Event</a></li>
             <li><a class = "button" href="http://127.0.0.1:8000/manage_people/">Manage People</a></li>

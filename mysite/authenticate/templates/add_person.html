@@ -5,11 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel= "stylesheet" type="text/css" href="..\static\style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Add_Person</title>
 </head>
 <body>
     <div class="header">
-    <a class = "home" href="http://127.0.0.1:8000/"><img src="../static/home.jpg" width = "60px" margin-top: auto margin-bottom: auto, alt="Home"></a>
+    <a class = "home" href="http://127.0.0.1:8000/"><span class="material-symbols-rounded" style = "font-size: 75px;">
+        home
+        </span></a>
     <h1>Add Person</h1>
     </div>
     <div id="UI">
@@ -17,13 +20,13 @@
         {% csrf_token %}
         <div class="form-grid" style="padding-top: 5px;">
             <!--first name-->
-            <label for="first_name" class = "float">First Name:</label>
+            <label for="first_name" class = "float">First Name: </label>
             <input type="text" id="first_name" name="first_name" title="Enter the members first name.">
             <!--last name-->
-            <label for="last_name" class = "float">Last Name:</label>
+            <label for="last_name" class = "float">Last Name: </label>
             <input type="text" id="last_name" name="last_name" title="Enter the members Last name.">
             <!--pin-->
-            <label for="pin" class = "float">pin:</label>
+            <label for="pin" class = "float">pin: </label>
             <input type="text" id="pin" name="pin" title="Enter the members pin."
             onchange="validate('pin', pin)"> <br><p style="font-size: 16px; color: red" id = "pinerror"></p>
             <!-- scan
@@ -45,8 +48,20 @@
                 </div>
             </div><br>
         <!-- create -->
-        <input class="button" style="background-color: #3a58ae; color: #ffcc02; font-size: 20px; margin-left: auto; margin-right: auto;" 
-        type = "submit" name = "submit" value = "Take Picture to Create" onclick=""><p id = "buttonerror"></p>
+        <div
+        id="box"
+        style="
+            height: auto;
+            width: auto;
+            text-align: center;
+            background-color: green;
+            display: none;
+        "
+        >
+        Loading / Open Photo Tab
+        </div>
+        <input class="button" id = "picture_button" style="background-color: #3a58ae; color: #ffcc02; font-size: 20px; margin-left: auto; margin-right: auto;" 
+        type = "submit" name = "submit" value = "Take Picture to Create" onclick="hide_button()"><p id = "buttonerror"></p>
     </form>
     </div>
     <script>
@@ -56,14 +71,32 @@
 
         //set errors to false by default
         document.getElementById(field + "error").innerHTML = ""; 
-
+        pininuse = false
+        
         if(pin>9999 || isNaN(pin) || pin.length<4){
             console.log(field);
             document.getElementById(field + "error").innerHTML = "Input not Valid"; //throw error
             document.getElementById(field).focus(); // focus on the error
         }
+        
 
         }
+        // function hide_button(id){
+        //     var btn = document.getElementById("picture_button");
+        //     btn.innerHTML = "loading"
+        //     //document.getElementById("picture_button").innerHTML= "Loading do not press";
+
+        // }
+        const btn = document.getElementById('picture_button');
+
+        btn.addEventListener('click', () => {
+        //  hide button
+        btn.style.display = 'none';
+
+        //  show div
+        const box = document.getElementById('box');
+        box.style.display = 'block';
+      });
     </script>
 </body>
 </html>

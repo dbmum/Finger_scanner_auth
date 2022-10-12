@@ -5,12 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel= "stylesheet" type="text/css" href="..\static\style.css">
+    <link rel= "stylesheet" type="text/css" href="..\..\static\style.css">
     <title>Manage Perks</title>
     <script src="..\static\reader.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
     <div class="header">
-    <a class = "home" href="http://127.0.0.1:8000/"><img src="../static/home.jpg" width = "60px" margin-top: auto margin-bottom: auto, alt="Home"></a>
+    <a class = "home" href="http://127.0.0.1:8000/"><span class="material-symbols-rounded" style="font-size: 75px;">
+        home
+        </span></a>
     <h1>Manage Perks</h1>
     </div><br>
     <form action="http://127.0.0.1:8000/add_perk/" method ="POST" style="display: grid; width: 400px; margin-left: auto; margin-right: auto;
@@ -35,7 +39,7 @@
                     </tr>
                     {% for i in perks %}
                     <tr>
-                        <td><a href="">{{i.name}}</a></td>
+                        <td><a href="http://127.0.0.1:8000/make_perk_delete/{{i.id}}/">{{i.name}}</a></td>
                         <td>{{i.date_added}}</td>
                     </tr>
                     {% endfor %} 
