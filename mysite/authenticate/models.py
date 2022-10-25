@@ -10,7 +10,7 @@ class Person(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     image = models.CharField(max_length=200, null=True)
-    pin = models.CharField(max_length=4, null=True)
+    pin = models.CharField(max_length=6, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
     perks = models.ManyToManyField(Perk, blank=True)
 

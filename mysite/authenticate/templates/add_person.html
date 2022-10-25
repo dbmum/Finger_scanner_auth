@@ -26,9 +26,9 @@
             <label for="last_name" class = "float">Last Name: </label>
             <input type="text" id="last_name" name="last_name" title="Enter the members Last name.">
             <!--pin-->
-            <label for="pin" class = "float">pin: </label>
-            <input type="text" id="pin" name="pin" title="Enter the members pin."
-            onchange="validate('pin', pin)"> <br><p style="font-size: 16px; color: red" id = "pinerror"></p>
+            <span class = "float" style="vertical-align: middle;">pin: </span><span style="font-size: 30px; color:#3a58ae; font-weight: 700; text-align: left;">{{pin}}</span>
+            <!-- hidden pin input... -->
+            <input type="text" id="pin" name="pin" title="Enter the members pin." value="{{pin}}" style="display:none;"> 
             <!-- scan
             <input class="" style="background-color: #3a58ae; color: #ffcc02; border-radius: 5px;" 
             type = "button" name = "scan" value = "Scan" onclick=""><p id = "buttonerror"></p>-->

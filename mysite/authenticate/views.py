@@ -1,3 +1,4 @@
+from random import randint
 from django.shortcuts import render
 from .models import Person, Perk
 import cv2
@@ -32,6 +33,19 @@ def get_person_from_db(this_pin):
         print("~~~~~\nperson NOT found by pin!\n~~~~~")
     return person
 
+def add_zero_padding(num : str, length):
+    if len(num) == length:
+        return num
+    if len(num) < length:
+        num = "0" + num
+        return add_zero_padding(num, length)
+
+def get_rand_pin():
+    while True:
+        pin = add_zero_padding(str(randint(0, 999999)), 6)
+        if get_person_from_db(pin) == False: # if pin not in use
+            break
+    return pin
         
 def get_html_ready_perks(query):
     context = {"perks":[]}
@@ -116,7 +130,7 @@ def take_picture(url):
     
     cam.release()
     # shutil.move(url,imgSaveDir)
-    # cam.destoryAllWindows()
+    cv2.destroyAllWindows()
 
 
 
@@ -124,7 +138,6 @@ def take_picture(url):
 def enroll_new_person(request):
     info = request.POST
     
-    context = {"error": ""}
     # person = Person()
 
     perks = []
@@ -140,6 +153,8 @@ def enroll_new_person(request):
             lname = info[i]
         elif i == "pin":
             pin = info[i]
+
+    context = {"error": f"{fname} enrolled with pin: {pin}"}
     
     person = get_person_from_db(pin)
     
@@ -201,6 +216,7 @@ def show_manage_people(request, error_context={"error": ""}):
 def show_add_person(request):
     perks_query = get_perks_from_db()
     context = get_html_ready_perks(perks_query)
+    context["pin"] = get_rand_pin()
     return render(request, "add_person.html", context)
 
 def show_edit_person(request, id):
